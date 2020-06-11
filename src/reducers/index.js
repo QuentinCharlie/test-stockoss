@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import demoReducer from './demo';
+import mapReducer from './map';
 
 const rootReducer = combineReducers({
-  demo: demoReducer,
+  map: mapReducer,
   // ... autres reducers
 });
 

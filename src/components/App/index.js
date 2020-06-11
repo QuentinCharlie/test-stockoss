@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 // == Import
 import Map from 'src/containers/Map';
@@ -23,6 +24,13 @@ const App = ({
       changeShelf(shelf);
     }
   }
+
+  const cssInputInfo = {
+    'input-info': true,
+    'no-input': inputValue === '',
+    'too-short': inputValue.length > 0 && inputValue.length < 5,
+    'too-long': inputValue.length > 5,
+  }
   return (
     <AppStyled>
       <h1>Trouvez l'étagère d'un objet et son emplacement.</h1>
@@ -36,6 +44,7 @@ const App = ({
           onChange={handleChange}
         />
       </div>
+      <div className={classNames(cssInputInfo)} />
 
       <Map />
     </AppStyled>

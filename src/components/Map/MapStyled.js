@@ -7,19 +7,19 @@ const MapStyled = styled.div`
   width: 500px;
   height: 500px;
   margin: 1em 0;
-  border: black 1px solid;
+  border: #222222 2px solid;
   position: relative;
   .door {
     position: absolute;
-    top: -1px; right: 0;
+    top: -2px; right: 0;
     width: 30px;
-    border: white 1px solid;
+    border: white 2px solid;
     &::before {
       position: absolute;
       top: -1px; right: -1px;
       display: inline-block;
       content: "";
-      background-color: black;
+      background-color: #2A4952;
       height: 1px;
       width: 30px;
       transform-origin: top right;
@@ -35,11 +35,15 @@ const MapStyled = styled.div`
     .box {
       width: calc(100% / 5 - 20px);
       height: calc(100% / 6 - 20px);
-      background-color: lightgreen;
-      border: black 1px solid;
+      color: white;
+      background-color: #2A4952;
+      border-right: white 1px solid;
+      display:flex;
+      justify-content: center;
+      align-items: center;
     }
     .targetedShelf {
-      background-color: red;
+      background-color: #01FF70;
     }
   } 
 `;

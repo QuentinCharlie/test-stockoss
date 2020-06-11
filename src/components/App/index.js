@@ -25,6 +25,8 @@ const App = ({
     }
   }
 
+  // @todo Bouton clear pour l'inputValue, et refocus input + bouton pour mettre l'item et sa position en favoris
+
   const cssInputInfo = {
     'input-info': true,
     'no-input': inputValue === '',
@@ -43,6 +45,10 @@ const App = ({
           type="text"
           onChange={handleChange}
         />
+        <div className="buttons">
+          <button className="button button-clear">&times;</button>
+          <button className="button button-fav">&#10084;</button>
+        </div>
       </div>
       <div className={classNames(cssInputInfo)} />
 

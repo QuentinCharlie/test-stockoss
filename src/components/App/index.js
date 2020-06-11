@@ -25,6 +25,16 @@ const App = ({
     }
   }
 
+  const handleClear = () => {
+    changeInputValue('');
+    const inputElement = document.querySelector('#object-id-input');
+    inputElement.focus();
+  }
+
+  const handleFav = () => {
+    //
+  }
+
   // @todo Bouton clear pour l'inputValue, et refocus input + bouton pour mettre l'item et sa position en favoris
 
   const cssInputInfo = {
@@ -43,11 +53,12 @@ const App = ({
           id="object-id-input"
           placeholder="Id de l'objet"
           type="text"
+          value={inputValue}
           onChange={handleChange}
         />
         <div className="buttons">
-          <button className="button button-clear">&times;</button>
-          <button className="button button-fav">&#10084;</button>
+          <button className="button button-clear" onClick={handleClear}>&times;</button>
+          <button className="button button-fav" onClick={handleFav}>&#10084;</button>
         </div>
       </div>
       <div className={classNames(cssInputInfo)} />

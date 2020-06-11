@@ -60,7 +60,7 @@ const AppStyled = styled.div`
       }
       .button-fav {
         background-color: #39CCCC ;  
-        font-size: 1.1em;
+        font-size: 1.05em;
         padding: 2px;
       }
     }

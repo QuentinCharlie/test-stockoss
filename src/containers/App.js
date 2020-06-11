@@ -4,13 +4,18 @@ import { connect } from 'react-redux';
 import App from 'src/components/App';
 
 // Action Creators
-import { changeInputValue, changeShelf } from 'src/actions/map';
+import {
+  changeInputValue,
+  changeShelf,
+  addToFavorites,
+} from 'src/actions/map';
 
 // == Data / state
 // Notre composant à besoin de données depuis le state ?
 // On prépare un objet avec les props attendues par le composant
 const mapStateToProps = (state) => ({
   inputValue: state.map.inputValue,
+  favorites: state.map.favorites,
 });
 
 // == Actions / dispatch
@@ -22,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   changeShelf: (shelf) => {
     dispatch(changeShelf(shelf));
+  },
+  addToFavorites: () => {
+    dispatch(addToFavorites());
   },
 });
 

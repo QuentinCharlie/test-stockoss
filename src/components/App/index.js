@@ -11,9 +11,12 @@ import AppStyled from './AppStyled';
 // == Composant
 const App = ({
   inputValue,
+  favorites,
   changeInputValue,
   changeShelf,
+  addToFavorites,
 }) => {
+
   const handleChange = (e) => {
     const value = e.target.value;
     changeInputValue(value);
@@ -25,17 +28,22 @@ const App = ({
     }
   }
 
+  const inputElement = document.querySelector('#object-id-input');
   const handleClear = () => {
     changeInputValue('');
-    const inputElement = document.querySelector('#object-id-input');
     inputElement.focus();
   }
 
   const handleFav = () => {
-    //
+    if (inputValue.length === 5 && favorites.some((favorite) => inputValue === favorite.id)) {
+      // @todo trigger a message that explain it's already in favorites
+      console.log('already in favs');
+    }
+    else if (inputValue.length === 5 && !favorites.some((favorite) => inputValue === favorite.id)) {
+      addToFavorites();
+      // @todo trigger something that show it's been favorited
+    }
   }
-
-  // @todo Bouton clear pour l'inputValue, et refocus input + bouton pour mettre l'item et sa position en favoris
 
   const cssInputInfo = {
     'input-info': true,
@@ -70,8 +78,10 @@ const App = ({
 
 App.propTypes = {
   inputValue: PropTypes.string.isRequired,
+  favorites: PropTypes.array.isRequired,
   changeInputValue: PropTypes.func.isRequired,
   changeShelf: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
 };
 
 // == Export

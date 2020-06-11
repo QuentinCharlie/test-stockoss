@@ -1,10 +1,15 @@
 // Action Types
-import { CHANGE_INPUT_VALUE, CHANGE_SHELF } from 'src/actions/map';
+import {
+  CHANGE_INPUT_VALUE,
+  CHANGE_SHELF,
+  ADD_TO_FAVORITES,
+} from 'src/actions/map';
 
 // Initial State
 const initialState = {
   inputValue: '',
   shelf: {},
+  favorites: [],
 };
 
 // Reducer
@@ -20,6 +25,18 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         shelf: action.shelf,
+      };
+
+    case ADD_TO_FAVORITES:
+      return {
+        ...state,
+        favorites: [
+          ...state.favorites,
+          {
+            id: state.inputValue,
+            position: state.shelf.position,
+          },
+        ],
       };
 
     default:

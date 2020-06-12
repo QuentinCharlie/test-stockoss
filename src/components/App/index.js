@@ -5,9 +5,9 @@ import classNames from 'classnames';
 
 // == Import
 import Input from 'src/containers/Input';
+import Buttons from 'src/containers/Buttons';
 import Map from 'src/containers/Map';
 import FavMap from 'src/containers/FavMap';
-import findShelf from 'src/utils/StockossTest';
 import AppStyled from './AppStyled';
 
 // == Composant
@@ -16,53 +16,10 @@ const App = ({
   favorites,
   isAlreadyFav,
   areFavsVisible,
-  changeInputValue,
-  changeShelf,
-  addToFavorites,
   changeIsAlreadyFav,
   changeFavsVisibility,
   removeFromFavs,
 }) => {
-  // const handleChange = (e) => {
-  //   const value = e.target.value;
-  //   changeInputValue(value);
-
-  //   if (value.length === 5) {
-  //     const shelf = findShelf(value);
-  //     changeShelf(shelf);
-  //   }
-  //   if (isAlreadyFav === true) {
-  //     changeIsAlreadyFav();
-  //   }
-  // }
-
-  const inputElement = document.querySelector('#object-id-input');
-  const handleClear = () => {
-    changeInputValue('');
-    inputElement.focus();
-    changeIsAlreadyFav();
-  }
-
-  const handleFav = () => {
-    if (
-      inputValue.length === 5 &&
-      favorites.some((favorite) => inputValue === favorite.id &&
-      isAlreadyFav === false)
-    ) {
-      changeIsAlreadyFav();
-    }
-    else if (
-    inputValue.length === 5 &&
-    !favorites.some((favorite) => inputValue === favorite.id)
-    ) {
-      addToFavorites();
-    }
-  }
-
-  const handleFavListClick = () => {
-    changeFavsVisibility();
-  }
-
   const handleFavClear = (e) => {
     const id = e.target.dataset.id;
     if (favorites.length === 1) {
@@ -93,27 +50,8 @@ const App = ({
       <h1>Trouvez l'étagère d'un objet et son emplacement.</h1>
 
       <div className="input">
-        {/* <input
-          autoFocus
-          id="object-id-input"
-          placeholder="Id de l'objet"
-          type="text"
-          value={inputValue}
-          onChange={handleChange}
-        /> */}
         <Input />
-        <div className="buttons">
-          <button className="button button-clear" onClick={handleClear}>&times;</button>
-          <button className="button button-fav" onClick={handleFav}>&#10084;</button>
-          {favorites.length > 0 && (
-            <button className="button button-favlist" onClick={handleFavListClick}>
-              {!areFavsVisible
-                ? `Liste favoris (${favorites.length})`
-                : 'Plan simple'
-              }
-            </button>
-          )}
-        </div>
+        <Buttons />
       </div>
       <div className={classNames(cssInputInfo)} />
 
@@ -150,9 +88,6 @@ App.propTypes = {
   favorites: PropTypes.array.isRequired,
   isAlreadyFav: PropTypes.bool.isRequired,
   areFavsVisible: PropTypes.bool.isRequired,
-  changeInputValue: PropTypes.func.isRequired,
-  changeShelf: PropTypes.func.isRequired,
-  addToFavorites: PropTypes.func.isRequired,
   changeIsAlreadyFav: PropTypes.func.isRequired,
   changeFavsVisibility: PropTypes.func.isRequired,
   removeFromFavs: PropTypes.func.isRequired,

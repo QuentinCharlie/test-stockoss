@@ -4,6 +4,8 @@ import {
   CHANGE_SHELF,
   ADD_TO_FAVORITES,
   CHANGE_IS_ALREADY_FAV,
+  CHANGE_FAVS_VISBILITY,
+  REMOVE_FROM_FAVS,
 } from 'src/actions/map';
 
 // Initial State
@@ -12,7 +14,7 @@ const initialState = {
   shelf: {},
   favorites: [],
   isAlreadyFav: false,
-  isFavsVisible: false,
+  areFavsVisible: false,
 };
 
 // Reducer
@@ -47,6 +49,22 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         isAlreadyFav: !state.isAlreadyFav,
       };
+
+    case CHANGE_FAVS_VISBILITY:
+      return {
+        ...state,
+        areFavsVisible: !state.areFavsVisible,
+      };
+
+    case REMOVE_FROM_FAVS: {
+      const remainingFavs = state.favorites.filter((fav) => fav.id !== action.id);
+      return {
+        ...state,
+        favorites: [
+          ...remainingFavs,
+        ],
+      };
+    }
 
     default:
       return state;

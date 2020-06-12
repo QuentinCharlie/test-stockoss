@@ -9,6 +9,8 @@ import {
   changeShelf,
   addToFavorites,
   changeIsAlreadyFav,
+  changeFavsVisibility,
+  removeFromFavs,
 } from 'src/actions/map';
 
 // == Data / state
@@ -18,6 +20,7 @@ const mapStateToProps = (state) => ({
   inputValue: state.map.inputValue,
   favorites: state.map.favorites,
   isAlreadyFav: state.map.isAlreadyFav,
+  areFavsVisible: state.map.areFavsVisible,
 });
 
 // == Actions / dispatch
@@ -35,6 +38,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   changeIsAlreadyFav: () => {
     dispatch(changeIsAlreadyFav());
+  },
+  changeFavsVisibility: () => {
+    dispatch(changeFavsVisibility());
+  },
+  removeFromFavs: (id) => {
+    dispatch(removeFromFavs(id));
   },
 });
 

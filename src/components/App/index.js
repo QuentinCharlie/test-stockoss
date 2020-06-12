@@ -14,10 +14,13 @@ const App = ({
   inputValue,
   favorites,
   isAlreadyFav,
+  areFavsVisible,
   changeInputValue,
   changeShelf,
   addToFavorites,
   changeIsAlreadyFav,
+  changeFavsVisibility,
+  removeFromFavs,
 }) => {
   const handleChange = (e) => {
     const value = e.target.value;
@@ -55,12 +58,34 @@ const App = ({
     }
   }
 
+  const handleFavListClick = () => {
+    changeFavsVisibility();
+  }
+
+  const handleFavClear = (e) => {
+    const id = e.target.dataset.id;
+    if (favorites.length === 1) {
+      removeFromFavs(id);
+      changeFavsVisibility();
+      if (inputValue === id && isAlreadyFav) {
+        changeIsAlreadyFav();
+      }
+    } 
+    else {
+      removeFromFavs(id);
+    }
+  }
+
+  function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   const cssInputInfo = {
     'input-info': true,
     'no-input': inputValue === '',
     'too-short': inputValue.length > 0 && inputValue.length < 5,
     'too-long': inputValue.length > 5,
-    'already-fav': isAlreadyFav,
+    'already-fav': isAlreadyFav && inputValue.length === 5,
   }
   return (
     <AppStyled>
@@ -79,25 +104,41 @@ const App = ({
           <button className="button button-clear" onClick={handleClear}>&times;</button>
           <button className="button button-fav" onClick={handleFav}>&#10084;</button>
           {favorites.length > 0 && (
-            <button className="button button-favlist">Liste favoris ({favorites.length})</button>
+            <button className="button button-favlist" onClick={handleFavListClick}>
+              {!areFavsVisible
+                ? `Liste favoris (${favorites.length})`
+                : 'Plan simple'
+              }
+            </button>
           )}
         </div>
       </div>
       <div className={classNames(cssInputInfo)} />
 
-      {favorites.length > 0 && (
+      {areFavsVisible && (
         <>
           <div className="favorites-list">
             { // Sorting favorites by alphabetical shelf order
               favorites.sort((a, b) => a.position.localeCompare(b.position)).map((fav) => (
-              <div className="favorite-item" key={fav.id}>{fav.position} - {fav.id}</div>
+              <div className="favorite-item" key={fav.id}>
+                <span>{capitalize(fav.position)} - {fav.id}</span>
+                <button
+                  className="fav-clear-button"
+                  onClick={handleFavClear}
+                  data-id={fav.id}
+                >
+                  &times;
+                </button>
+              </div>
             ))}
           </div>
           <FavMap />
         </>
       )}
 
-      <Map />
+      {!areFavsVisible && (
+        <Map />
+      )}
     </AppStyled>
   );
 }
@@ -106,10 +147,13 @@ App.propTypes = {
   inputValue: PropTypes.string.isRequired,
   favorites: PropTypes.array.isRequired,
   isAlreadyFav: PropTypes.bool.isRequired,
+  areFavsVisible: PropTypes.bool.isRequired,
   changeInputValue: PropTypes.func.isRequired,
   changeShelf: PropTypes.func.isRequired,
   addToFavorites: PropTypes.func.isRequired,
   changeIsAlreadyFav: PropTypes.func.isRequired,
+  changeFavsVisibility: PropTypes.func.isRequired,
+  removeFromFavs: PropTypes.func.isRequired,
 };
 
 // == Export

@@ -20,6 +20,7 @@ const AppStyled = styled.div`
 
   .input {
     display: flex;
+    width: 235px;
     input {
       font-size: 1.1em;
       width: 200px;
@@ -27,7 +28,7 @@ const AppStyled = styled.div`
       padding: 1em;
       border: none;
       color: white;
-      background-color:#2A4952;
+      background-color: #2A4952;
       border-radius: 5px;
       text-align: center;
       ::placeholder {
@@ -98,6 +99,31 @@ const AppStyled = styled.div`
   .already-fav::before {
     color: #85144b;
     content:"Déjà en favoris !"
+  }
+
+  .favorites-list {
+    width: 235px;
+    color: #2A4952;
+    margin: .5em 0;
+    .favorite-item {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span {
+        width: 40%;
+        text-align: left;
+      }
+      .fav-clear-button {
+        height: 20px;
+        width: 20px;
+        border: 0;
+        border-radius: 5px;
+        color: white;
+        background-color: #FF4136;
+        padding: 2px;
+      }
+    }
   }
 `;
 

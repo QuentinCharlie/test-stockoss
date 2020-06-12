@@ -3,6 +3,7 @@ import {
   CHANGE_INPUT_VALUE,
   CHANGE_SHELF,
   ADD_TO_FAVORITES,
+  CHANGE_IS_ALREADY_FAV,
 } from 'src/actions/map';
 
 // Initial State
@@ -10,6 +11,8 @@ const initialState = {
   inputValue: '',
   shelf: {},
   favorites: [],
+  isAlreadyFav: false,
+  isFavsVisible: false,
 };
 
 // Reducer
@@ -37,6 +40,12 @@ const mapReducer = (state = initialState, action = {}) => {
             position: state.shelf.position,
           },
         ],
+      };
+
+    case CHANGE_IS_ALREADY_FAV:
+      return {
+        ...state,
+        isAlreadyFav: !state.isAlreadyFav,
       };
 
     default:

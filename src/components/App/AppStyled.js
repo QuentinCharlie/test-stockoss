@@ -46,6 +46,7 @@ const AppStyled = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
       .button {
         height: 24px;
         width: 24px;
@@ -62,6 +63,14 @@ const AppStyled = styled.div`
         background-color: #39CCCC ;  
         font-size: 1.05em;
         padding: 2px;
+      }
+      .button-favlist {
+        width: 120px;
+        font-weight: bold;
+        background-color: #39CCCC ; 
+        padding: 2px;
+        position: absolute;
+        bottom: 0; left: 28px;
       }
     }
   }
@@ -85,6 +94,10 @@ const AppStyled = styled.div`
   .too-long::before {
     color: #FF4136;
     content:"Il y a trop de caractères !"
+  }
+  .already-fav::before {
+    color: #85144b;
+    content:"Déjà en favoris !"
   }
 `;
 

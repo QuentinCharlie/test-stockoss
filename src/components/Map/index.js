@@ -1,5 +1,5 @@
 // == Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import
@@ -10,11 +10,7 @@ const Map = ({
   inputValue,
   shelf,
 }) => {
-  useEffect(() => {
-    if (shelf.position !== undefined && inputValue.length === 5) {
-      // c
-    }
-  }, [shelf]);
+  // console.log('tes');
 
   return (
     <MapStyled>

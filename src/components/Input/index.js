@@ -28,6 +28,7 @@ const Input = ({
   };
   return (
     <InputStyled
+      autocomplete="off"
       autoFocus
       id="object-id-input"
       placeholder="Id de l'objet"

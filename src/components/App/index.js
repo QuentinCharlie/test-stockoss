@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 // == Import
+import Input from 'src/containers/Input';
 import Map from 'src/containers/Map';
 import FavMap from 'src/containers/FavMap';
 import findShelf from 'src/utils/StockossTest';
@@ -22,18 +23,18 @@ const App = ({
   changeFavsVisibility,
   removeFromFavs,
 }) => {
-  const handleChange = (e) => {
-    const value = e.target.value;
-    changeInputValue(value);
+  // const handleChange = (e) => {
+  //   const value = e.target.value;
+  //   changeInputValue(value);
 
-    if (value.length === 5) {
-      const shelf = findShelf(value);
-      changeShelf(shelf);
-    }
-    if (isAlreadyFav === true) {
-      changeIsAlreadyFav();
-    }
-  }
+  //   if (value.length === 5) {
+  //     const shelf = findShelf(value);
+  //     changeShelf(shelf);
+  //   }
+  //   if (isAlreadyFav === true) {
+  //     changeIsAlreadyFav();
+  //   }
+  // }
 
   const inputElement = document.querySelector('#object-id-input');
   const handleClear = () => {
@@ -92,14 +93,15 @@ const App = ({
       <h1>Trouvez l'étagère d'un objet et son emplacement.</h1>
 
       <div className="input">
-        <input
+        {/* <input
           autoFocus
           id="object-id-input"
           placeholder="Id de l'objet"
           type="text"
           value={inputValue}
           onChange={handleChange}
-        />
+        /> */}
+        <Input />
         <div className="buttons">
           <button className="button button-clear" onClick={handleClear}>&times;</button>
           <button className="button button-fav" onClick={handleFav}>&#10084;</button>

@@ -1,27 +1,40 @@
 import { connect } from 'react-redux';
 
 // Du composant qui a besoin de data ou d'actions
-import FavMap from 'src/components/FavMap';
+import Input from 'src/components/Input';
 
 // Action Creators
-import {} from 'src/actions/map';
+import {
+  changeInputValue,
+  changeShelf,
+  changeIsAlreadyFav,
+} from 'src/actions/map';
 
 // == Data / state
 // Notre composant à besoin de données depuis le state ?
 // On prépare un objet avec les props attendues par le composant
 const mapStateToProps = (state) => ({
-  favorites: state.map.favorites,
+  inputValue: state.map.inputValue,
+  isAlreadyFav: state.map.isAlreadyFav,
 });
 
 // == Actions / dispatch
 // Notre composant à besoin d'agir sur le state ?
 // On prépare un objet avec les props attendues par le composant
-// eslint-disable-next-line no-unused-vars
 const mapDispatchToProps = (dispatch) => ({
+  changeInputValue: (inputValue) => {
+    dispatch(changeInputValue(inputValue));
+  },
+  changeShelf: (shelf) => {
+    dispatch(changeShelf(shelf));
+  },
+  changeIsAlreadyFav: () => {
+    dispatch(changeIsAlreadyFav());
+  },
 });
 
 // création du lien : container
 // connect(redux)(react) - connect(ce dont on a besoin)(qui en a besoin)
-const FavMapContainer = connect(mapStateToProps, mapDispatchToProps)(FavMap);
+const InputContainer = connect(mapStateToProps, mapDispatchToProps)(Input);
 
-export default FavMapContainer;
+export default InputContainer;

@@ -10,8 +10,6 @@ import {} from 'src/actions/map';
 // Notre composant à besoin de données depuis le state ?
 // On prépare un objet avec les props attendues par le composant
 const mapStateToProps = (state) => ({
-  inputValue: state.map.inputValue,
-  shelf: state.map.shelf,
   favorites: state.map.favorites,
 });
 

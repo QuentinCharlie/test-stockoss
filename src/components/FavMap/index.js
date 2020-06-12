@@ -15,7 +15,9 @@ const FavMap = ({
     <span className="door" />
     <div className="map">
       {shelves.map((shelfId) => (
-        <div className={`box ${favorites.some((fav) => fav.position === shelfId) ? 'targetedShelf' : ''}`}>{capitalize(shelfId)}</div>
+        <div className={`box ${favorites.some((fav) => fav.position === shelfId) ? 'targetedShelf' : ''}`}>
+          {capitalize(shelfId)}
+        </div>
       ))}
     </div>
   </FavMapStyled>

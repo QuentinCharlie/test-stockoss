@@ -16,7 +16,9 @@ const Map = ({
     <span className="door" />
     <div className="map">
       {shelves.map((shelfId) => (
-        <div className={`box ${shelf.position === shelfId && inputValue.length === 5 ? 'targetedShelf' : ''}`}>{capitalize(shelfId)}</div>
+        <div className={`box ${shelf.position === shelfId && inputValue.length === 5 ? 'targetedShelf' : ''}`}>
+          {capitalize(shelfId)}
+        </div>
       ))}
     </div>
   </MapStyled>

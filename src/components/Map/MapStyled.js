@@ -10,11 +10,13 @@ const MapStyled = styled.div`
   border: #222222 2px solid;
   position: relative;
   .door {
+    /* white border to make door entrance */
     position: absolute;
     top: -2px; right: 0;
     width: 30px;
     border: white 2px solid;
     &::before {
+      /* Openned door */
       position: absolute;
       top: -1px; right: -1px;
       display: inline-block;

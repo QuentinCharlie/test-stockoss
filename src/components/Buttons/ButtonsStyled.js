@@ -26,6 +26,10 @@ const ButtonsStyled = styled.div`
     font-size: 1.05em;
     padding: 2px;
   }
+  /* 
+    This button is not flexed, absolute to Buttons' div
+    Only visible when at least 1 item is in favorites
+  */
   .button-favlist {
     width: 120px;
     font-weight: bold;

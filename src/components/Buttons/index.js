@@ -18,22 +18,29 @@ const App = ({
 }) => {
   const inputElement = document.querySelector('#object-id-input');
   const handleClear = () => {
-    changeInputValue('');
-    inputElement.focus();
-    changeIsAlreadyFav();
+    if (inputValue !== '') {
+      changeInputValue('');
+      inputElement.focus();
+      if (isAlreadyFav) {
+        changeIsAlreadyFav();
+      }
+    }
   };
 
   const handleFav = () => {
     if (
-      inputValue.length === 5 &&
-      favorites.some((favorite) => inputValue === favorite.id &&
-      isAlreadyFav === false)
+      // Checking if already in favorites
+      inputValue.length === 5
+      && favorites.some((favorite) => (
+        inputValue === favorite.id
+        && isAlreadyFav === false
+      ))
     ) {
       changeIsAlreadyFav();
     }
     else if (
-      inputValue.length === 5 &&
-      !favorites.some((favorite) => inputValue === favorite.id)
+      inputValue.length === 5
+      && !favorites.some((favorite) => inputValue === favorite.id)
     ) {
       addToFavorites();
     }
@@ -45,10 +52,34 @@ const App = ({
 
   return (
     <ButtonsStyled>
-      <button type="button" className="button button-clear" onClick={handleClear}>&times;</button>
-      <button type="button" className="button button-fav" onClick={handleFav}>&#10084;</button>
+      {/* Clear button */}
+      <button
+        type="button"
+        className="button button-clear"
+        onClick={handleClear}
+      >
+        &times;
+      </button>
+
+      {/* Heart button */}
+      <button
+        type="button"
+        className="button button-fav"
+        onClick={handleFav}
+      >
+        &#10084;
+      </button>
+
+      {/*
+        Favorite list / Plan simple button
+        Only visible when at least 1 item is in favorites
+      */}
       {favorites.length > 0 && (
-        <button type="button" className="button button-favlist" onClick={handleFavListClick}>
+        <button
+          type="button"
+          className="button button-favlist"
+          onClick={handleFavListClick}
+        >
           {!areFavsVisible
             ? `Liste favoris (${favorites.length})`
             : 'Plan simple'}

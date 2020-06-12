@@ -15,9 +15,14 @@ const App = ({
   removeFromFavs,
 }) => {
   const handleFavClear = (e) => {
+    // getting item id
     const { id } = e.target.dataset;
+
     if (favorites.length === 1) {
+      // checking if it's the last item in favorites
+      // and if so after removing the item
       removeFromFavs(id);
+      // then switch 'favorites list and map' view to regular view
       changeFavsVisibility();
       if (inputValue === id && isAlreadyFav) {
         changeIsAlreadyFav();

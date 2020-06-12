@@ -13,6 +13,7 @@ const Map = ({
   <MapStyled>
     <span className="door" />
     <div className="map">
+      {/* @todo try and find a better looking way to do this, too much repetition  */}
       <div className={`box ${shelf.position === 'a0' && inputValue.length === 5 ? 'targetedShelf' : ''}`}>A0</div>
       <div className={`box ${shelf.position === 'a1' && inputValue.length === 5 ? 'targetedShelf' : ''}`}>A1</div>
       <div className={`box ${shelf.position === 'a2' && inputValue.length === 5 ? 'targetedShelf' : ''}`}>A2</div>

@@ -29,6 +29,11 @@ const AppStyled = styled.div`
     margin: .5em 0 1em 0;
     font-size: .7em;
     font-style: italic;
+    /* 
+    padding to center text below input
+    because of buttons on the right
+    calc : button-size + button-margin 
+    */
     padding-right: calc(24px + .3em);
   }
   .no-input::before {

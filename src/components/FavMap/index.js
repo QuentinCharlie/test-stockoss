@@ -12,6 +12,7 @@ const FavMap = ({
   <FavMapStyled>
     <span className="door" />
     <div className="map">
+      {/* @todo try and find a better looking way to do this, too much repetition  */}
       <div className={`box ${favorites.some((fav) => fav.position === 'a0') ? 'targetedShelf' : ''}`}>A0</div>
       <div className={`box ${favorites.some((fav) => fav.position === 'a1') ? 'targetedShelf' : ''}`}>A1</div>
       <div className={`box ${favorites.some((fav) => fav.position === 'a2') ? 'targetedShelf' : ''}`}>A2</div>

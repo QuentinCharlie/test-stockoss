@@ -17,6 +17,7 @@ const App = ({
   isAlreadyFav,
   areFavsVisible,
 }) => {
+  // display classNames based on conditions (bool)
   const cssInputInfo = {
     'input-info': true,
     'no-input': inputValue === '',

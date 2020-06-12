@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import
+import { capitalize } from 'src/utils/functions';
 import FavListStyled from './FavListStyled';
 
 // == Composant
@@ -32,10 +33,6 @@ const App = ({
       removeFromFavs(id);
     }
   };
-
-  function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
 
   return (
     <FavListStyled>
